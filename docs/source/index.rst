@@ -10,6 +10,8 @@ Welcome to 4Connect's documentation!
    :maxdepth: 2
    :caption: Contents:
 
+.. automodule:: main
+   :members:
 
 
 Indices and tables
