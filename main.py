@@ -1,3 +1,21 @@
+"""
+main module
+
+Classes
+-------
+Token
+Player
+Move
+Game
+
+Constants
+---------
+HORIZONTAL
+VERTICAL
+BOARD_SIZE
+
+"""
+
 from enum import Enum
 
 # constants
@@ -25,6 +43,19 @@ class Move:
 
 
 class Game:
+    """
+    Attributes
+    ----------
+    turn : Player(Enum)
+    turn_count : int
+                 Number of turns already made.
+    game_over : bool
+                Boolean value if the game is won, lost or not playable.
+    board : list[list[]]
+            Matrix where the game takes place.
+    move_list: list
+               List with al past moves that where played.
+    """
 
     turn: "Player"
     turn_count: int
