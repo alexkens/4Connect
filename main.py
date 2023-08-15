@@ -1,5 +1,5 @@
 """
-main module
+Main module that contains all the class and functions.
 
 Classes
 -------
