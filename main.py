@@ -44,6 +44,8 @@ class Move:
 
 class Game:
     """
+    Class that contains game logic and game execution.
+
     Attributes
     ----------
     turn : Player(Enum)
