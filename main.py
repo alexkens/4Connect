@@ -36,6 +36,15 @@ class Player(Enum):
 
 
 class Move:
+    """Class move that depicts certain features.
+
+    Attributes
+    ----------
+    pos_y : int
+    pos_x : int
+    player : Player
+
+    """
     def __init__(self, pos_y, pos_x, player):
         self.pos_y = pos_y
         self.pos_x = pos_x
@@ -43,8 +52,7 @@ class Move:
 
 
 class Game:
-    """
-    Class that contains game logic and game execution.
+    """Class that contains game logic and game execution.
 
     Attributes
     ----------
