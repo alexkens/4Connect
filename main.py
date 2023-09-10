@@ -56,7 +56,7 @@ class Game:
 
     Attributes
     ----------
-    turn : Player(Enum)
+
     turn_count : int
                  Number of turns already made.
     game_over : bool
@@ -80,6 +80,14 @@ class Game:
         self.game_over = False
 
     def move(self, move: "Move"):
+        """Makes a move on the board and checks if game is over.
+
+        Parameter
+        ---------
+        move : "Move"
+               Object move that is being carried out.
+        """
+
         # check if game is over
         if self.game_over:
             print("Game is already over")

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>4Connect.main &mdash; 4Connect 0.0.1 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            4Connect
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../code.html">4Connect Code</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">4Connect</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">4Connect.main</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for 4Connect.main</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Main module that contains all the class and functions.</span>
+
+<span class="sd">Classes</span>
+<span class="sd">-------</span>
+<span class="sd">Token</span>
+<span class="sd">Player</span>
+<span class="sd">Move</span>
+<span class="sd">Game</span>
+
+<span class="sd">Constants</span>
+<span class="sd">---------</span>
+<span class="sd">HORIZONTAL</span>
+<span class="sd">VERTICAL</span>
+<span class="sd">BOARD_SIZE</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">enum</span> <span class="kn">import</span> <span class="n">Enum</span>
+
+<span class="c1"># constants</span>
+<span class="n">HORIZONTAL</span> <span class="o">=</span> <span class="mi">7</span>
+<span class="n">VERTICAL</span> <span class="o">=</span> <span class="mi">6</span>
+<span class="n">BOARD_SIZE</span> <span class="o">=</span> <span class="n">HORIZONTAL</span> <span class="o">*</span> <span class="n">VERTICAL</span>
+
+
+<div class="viewcode-block" id="Token"><a class="viewcode-back" href="../../code.html#4Connect.main.Token">[docs]</a><span class="k">class</span> <span class="nc">Token</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+    <span class="n">F</span> <span class="o">=</span> <span class="s2">&quot;_&quot;</span>
+    <span class="n">W</span> <span class="o">=</span> <span class="s2">&quot;w&quot;</span>
+    <span class="n">B</span> <span class="o">=</span> <span class="s2">&quot;b&quot;</span></div>
+
+
+<div class="viewcode-block" id="Player"><a class="viewcode-back" href="../../code.html#4Connect.main.Player">[docs]</a><span class="k">class</span> <span class="nc">Player</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+    <span class="n">White</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">Black</span> <span class="o">=</span> <span class="mi">1</span></div>
+
+
+<div class="viewcode-block" id="Move"><a class="viewcode-back" href="../../code.html#4Connect.main.Move">[docs]</a><span class="k">class</span> <span class="nc">Move</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Class move that depicts certain features.</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    pos_y : int</span>
+<span class="sd">    pos_x : int</span>
+<span class="sd">    player : Player</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos_y</span><span class="p">,</span> <span class="n">pos_x</span><span class="p">,</span> <span class="n">player</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pos_y</span> <span class="o">=</span> <span class="n">pos_y</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pos_x</span> <span class="o">=</span> <span class="n">pos_x</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">player</span> <span class="o">=</span> <span class="n">player</span></div>
+
+
+<div class="viewcode-block" id="Game"><a class="viewcode-back" href="../../code.html#4Connect.main.Game">[docs]</a><span class="k">class</span> <span class="nc">Game</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Class that contains game logic and game execution.</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+
+<span class="sd">    turn_count : int</span>
+<span class="sd">                 Number of turns already made.</span>
+<span class="sd">    game_over : bool</span>
+<span class="sd">                Boolean value if the game is won, lost or not playable.</span>
+<span class="sd">    board : list[list[]]</span>
+<span class="sd">            Matrix where the game takes place.</span>
+<span class="sd">    move_list: list</span>
+<span class="sd">               List with al past moves that where played.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">turn</span><span class="p">:</span> <span class="s2">&quot;Player&quot;</span>
+    <span class="n">turn_count</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">game_over</span><span class="p">:</span> <span class="nb">bool</span>
+    <span class="n">board</span> <span class="o">=</span> <span class="p">[[]]</span>
+    <span class="n">move_list</span><span class="p">:</span> <span class="p">[]</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">board</span> <span class="o">=</span> <span class="p">[[</span><span class="n">Token</span><span class="o">.</span><span class="n">F</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">HORIZONTAL</span><span class="p">)]</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">VERTICAL</span><span class="p">)]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">turn</span> <span class="o">=</span> <span class="n">Player</span><span class="o">.</span><span class="n">Black</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">turn_count</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">game_over</span> <span class="o">=</span> <span class="kc">False</span>
+
+<div class="viewcode-block" id="Game.move"><a class="viewcode-back" href="../../code.html#4Connect.main.Game.move">[docs]</a>    <span class="k">def</span> <span class="nf">move</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">move</span><span class="p">:</span> <span class="s2">&quot;Move&quot;</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Makes a move on the board and checks if game is over.</span>
+
+<span class="sd">        Parameter</span>
+<span class="sd">        ---------</span>
+<span class="sd">        move : &quot;Move&quot;</span>
+<span class="sd">               Object move that is being carried out.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># check if game is over</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">game_over</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Game is already over&quot;</span><span class="p">)</span>
+            <span class="k">return</span>
+        <span class="c1"># check who&#39;s move it is</span>
+        <span class="k">if</span> <span class="n">move</span><span class="o">.</span><span class="n">player</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">turn</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Wrong turn&quot;</span><span class="p">)</span>
+            <span class="k">return</span>
+        <span class="c1"># check if position is free</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">board</span><span class="p">[</span><span class="n">move</span><span class="o">.</span><span class="n">pos_x</span><span class="p">][</span><span class="n">move</span><span class="o">.</span><span class="n">pos_y</span><span class="p">]</span> <span class="o">!=</span> <span class="n">Token</span><span class="o">.</span><span class="n">F</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Token position is not free, a </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">board</span><span class="p">[</span><span class="n">move</span><span class="o">.</span><span class="n">pos_y</span><span class="p">][</span><span class="n">move</span><span class="o">.</span><span class="n">pos_x</span><span class="p">]</span><span class="si">}</span><span class="s2"> token is blocking&quot;</span><span class="p">)</span>
+            <span class="k">return</span>
+
+        <span class="k">if</span> <span class="n">move</span><span class="o">.</span><span class="n">pos_y</span> <span class="o">&gt;=</span> <span class="n">VERTICAL</span> <span class="ow">or</span> <span class="n">move</span><span class="o">.</span><span class="n">pos_x</span> <span class="o">&gt;=</span> <span class="n">HORIZONTAL</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Token position is out of bounds.&quot;</span>
+                  <span class="sa">f</span><span class="s2">&quot; Position: y:</span><span class="si">{</span><span class="n">move</span><span class="o">.</span><span class="n">pos_y</span><span class="si">}</span><span class="s2">, x:</span><span class="si">{</span><span class="n">move</span><span class="o">.</span><span class="n">pos_x</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="k">return</span>
+        <span class="c1"># check under the new token position</span>
+        <span class="k">if</span> <span class="n">move</span><span class="o">.</span><span class="n">pos_y</span><span class="o">+</span><span class="mi">1</span> <span class="o">&lt;</span> <span class="n">VERTICAL</span> <span class="ow">and</span> <span class="n">move</span><span class="o">.</span><span class="n">pos_x</span><span class="o">+</span><span class="mi">1</span> <span class="o">&lt;</span> <span class="n">HORIZONTAL</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">board</span><span class="p">[</span><span class="n">move</span><span class="o">.</span><span class="n">pos_y</span><span class="o">+</span><span class="mi">1</span><span class="p">][</span><span class="n">move</span><span class="o">.</span><span class="n">pos_x</span><span class="p">]</span> <span class="o">==</span> <span class="n">Token</span><span class="o">.</span><span class="n">F</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Token cannot be placed on position x: </span><span class="si">{</span><span class="n">move</span><span class="o">.</span><span class="n">pos_x</span><span class="si">}</span><span class="s2">, y: </span><span class="si">{</span><span class="n">move</span><span class="o">.</span><span class="n">pos_y</span><span class="si">}</span><span class="s2">,&quot;</span>
+                      <span class="sa">f</span><span class="s2">&quot; free position on x: </span><span class="si">{</span><span class="n">move</span><span class="o">.</span><span class="n">pos_x</span><span class="si">}</span><span class="s2">, y: </span><span class="si">{</span><span class="n">move</span><span class="o">.</span><span class="n">pos_y</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="k">return</span>
+
+        <span class="c1"># set token</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">board</span><span class="p">[</span><span class="n">move</span><span class="o">.</span><span class="n">pos_x</span><span class="p">][</span><span class="n">move</span><span class="o">.</span><span class="n">pos_y</span><span class="p">]</span> <span class="o">=</span> <span class="n">move</span><span class="o">.</span><span class="n">player</span>
+
+        <span class="c1"># end of move</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">turn_count</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">turn</span> <span class="o">==</span> <span class="n">Player</span><span class="o">.</span><span class="n">Black</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">turn</span> <span class="o">=</span> <span class="n">Player</span><span class="o">.</span><span class="n">White</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">turn</span> <span class="o">=</span> <span class="n">Player</span><span class="o">.</span><span class="n">Black</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">check_game_over</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="Game.check_game_over"><a class="viewcode-back" href="../../code.html#4Connect.main.Game.check_game_over">[docs]</a>    <span class="k">def</span> <span class="nf">check_game_over</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># win of black</span>
+        <span class="c1"># win of white</span>
+        <span class="c1"># move is not possible and no one won (stalemate)</span>
+        <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="Game.check_game_over_player"><a class="viewcode-back" href="../../code.html#4Connect.main.Game.check_game_over_player">[docs]</a>    <span class="k">def</span> <span class="nf">check_game_over_player</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># vertical</span>
+        <span class="c1"># horizontal</span>
+        <span class="c1"># diagonal</span>
+        <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="Game.print_board"><a class="viewcode-back" href="../../code.html#4Connect.main.Game.print_board">[docs]</a>    <span class="k">def</span> <span class="nf">print_board</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">VERTICAL</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">HORIZONTAL</span><span class="p">):</span>
+                <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">board</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">y</span><span class="p">]</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">()</span></div></div>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">game</span> <span class="o">=</span> <span class="n">Game</span><span class="p">()</span>
+    <span class="n">game</span><span class="o">.</span><span class="n">print_board</span><span class="p">()</span>
+
+    <span class="n">game</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="n">Move</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="n">Player</span><span class="o">.</span><span class="n">Black</span><span class="p">))</span>
+    <span class="c1"># game.move(Move(1, 0, Player.White))</span>
+    <span class="n">game</span><span class="o">.</span><span class="n">print_board</span><span class="p">()</span>
+
+
+
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, me.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
